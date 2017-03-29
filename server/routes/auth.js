@@ -9,7 +9,7 @@ const User = require('../db/User.js');
 router.get('/signin', (req, res, next) => {
 	//render or redirect
 	// res.render('');
-	if(req.session.passport && req.session.passport.user) {
+	if(req.session.passport && req.session.passport) {
 		res.send({user_id: req.session.passport.user.rows[0].id, username: req.session.passport.user.rows[0].username});
 	} else {
 		res.end('GET request to login, bye');
