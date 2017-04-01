@@ -9,11 +9,10 @@ class Followers extends Component {
   }
 
   render() {
-    console.log('FOLLOWERS PROPS---', this.props);
     return (
       <div className="followers">
         <h3>Followers: {this.props.followers.length}</h3>
-        <h4>{this.props.followers[0]}</h4>
+        <h4>{this.props.followers.map( user => user.username ).join(', ')}</h4>
       </div>
     )
   }
