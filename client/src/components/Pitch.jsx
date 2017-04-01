@@ -7,6 +7,7 @@ import axios from 'axios';
 import Video from './Video.jsx';
 import Discussion from './Discussion.jsx';
 import { Link } from 'react-router-dom';
+import Followers from './Followers.jsx';
 import {
   Button, Container, Dimmer, Divider, Grid, Header, Icon, Image, Item, Label, Loader, Segment, Statistic
 } from 'semantic-ui-react';
@@ -79,7 +80,7 @@ class Pitch extends Component {
                 </Header>
                 <p>{this.props.profile}</p>
                 <p>
-                  { user ? userFollowButton : signUpButton  } 
+                  { user ? userFollowButton : signUpButton  }
                   <Button primary>Visit Website</Button>
                   <Button primary>Invest</Button>
                   <Button primary><Icon name='share' />  Share</Button>
@@ -89,6 +90,7 @@ class Pitch extends Component {
           </Container>
 
           <Discussion comments={this.props.comments} />
+          <Followers followers={this.props.followers} />
 
         </Segment>
       )
