@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { upvote, downvote } from '../actions/pitch';
 import { fetchPitch } from '../actions/pitchPage';
 import { followPitch, unfollowPitch, isFollowingPitch } from '../actions/followPitch.js';
+import { fetchPitch, fetchFollowers } from '../actions/pitchPage';
 import { connect } from 'react-redux';
 import axios from 'axios';
 import Video from './Video.jsx';
@@ -20,11 +21,12 @@ class Pitch extends Component {
   }
 
   componentWillMount() {
-    let { dispatch, getPitch, getComments} = this.props;
+    let { dispatch, getPitch, getComments, getFollowers } = this.props;
     let pitchId = this.props.match.params.pitchId;
     console.log('this pitchid', pitchId)
     getPitch(this.props.user, pitchId);
     getComments(pitchId);
+    getFollowers(pitchId);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -122,9 +124,13 @@ const mapDispatchToProps = (dispatch) => {
     onClickDownvote: (user, pitchid, vote) => { dispatch(downvote(user, pitchid, vote)) },
     getPitch: (pitchid, userid) => { dispatch(fetchPitch(pitchid, userid)) },
     getComments: (pitchid) => { dispatch(fetchPitchComments(pitchid)) },
+<<<<<<< HEAD
     onClickFollowPitch: (userid, pitchid) => { dispatch(followPitch(userid, pitchid)) },
     onClickUnfollowPitch: (userid, pitchid) => { dispatch(unfollowPitch(userid, pitchid)) },
     getIfFollowingPitch: (userid, pitchid) => { dispatch(isFollowingPitch(userid, pitchid)) }
+=======
+    getFollowers: (pitchid) => { dispatch(fetchFollowers(pitchid)) }
+>>>>>>> Add getFollowers action to pitchPage and call in componentWillMount
   }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Pitch);
