@@ -34,6 +34,7 @@ export function fetchFollowers(pitchid) {
       }
     })
     .then(results => dispatch(followersRecieved(results.data)))
+    .catch( err => console.log(err))
   }
 }
 
