@@ -24,3 +24,22 @@ export function fetchPitch(userid=null, pitchid) {
     .then(results => dispatch(pitchReceived(results.data)))
   }
 }
+
+export function fetchFollowers(pitchid) {
+  return (dispatch) => {
+    axios.get('http://localhost:8080/api/followers', {
+      params: {
+        q: 'follows',
+        pitchId: pitchid
+      }
+    })
+    .then(results => dispatch(followersRecieved(results.data)))
+  }
+}
+
+function followersRecieved(followers) {
+  return {
+    type: 'FETCHED_FOLLOWERS',
+    followers: followers
+  }
+}
