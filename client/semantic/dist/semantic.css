@@ -36842,3 +36842,10 @@ html.ios {
 /*******************************
          Site Overrides
 *******************************/
+
+.followers {
+  min-height: 100px;
+  background-color: #95a6c1;
+  border-radius: 5px;
+  padding: 20px;
+}
