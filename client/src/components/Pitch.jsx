@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { upvote, downvote } from '../actions/pitch';
-import { fetchPitch } from '../actions/pitchPage';
 import { followPitch, unfollowPitch, isFollowingPitch } from '../actions/followPitch.js';
 import { fetchPitch, fetchFollowers } from '../actions/pitchPage';
 import { connect } from 'react-redux';
@@ -124,13 +123,10 @@ const mapDispatchToProps = (dispatch) => {
     onClickDownvote: (user, pitchid, vote) => { dispatch(downvote(user, pitchid, vote)) },
     getPitch: (pitchid, userid) => { dispatch(fetchPitch(pitchid, userid)) },
     getComments: (pitchid) => { dispatch(fetchPitchComments(pitchid)) },
-<<<<<<< HEAD
     onClickFollowPitch: (userid, pitchid) => { dispatch(followPitch(userid, pitchid)) },
     onClickUnfollowPitch: (userid, pitchid) => { dispatch(unfollowPitch(userid, pitchid)) },
-    getIfFollowingPitch: (userid, pitchid) => { dispatch(isFollowingPitch(userid, pitchid)) }
-=======
+    getIfFollowingPitch: (userid, pitchid) => { dispatch(isFollowingPitch(userid, pitchid)) },
     getFollowers: (pitchid) => { dispatch(fetchFollowers(pitchid)) }
->>>>>>> Add getFollowers action to pitchPage and call in componentWillMount
   }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Pitch);

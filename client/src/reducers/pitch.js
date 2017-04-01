@@ -1,7 +1,7 @@
 const initialState = {
   pitch: {},
   isFetchingPitch: false,
-  isFollowing: false
+  isFollowing: false,
   followers: []
 }
 
@@ -16,6 +16,7 @@ function pitchPage (state = initialState, action) {
       return {
         ...state,
         isFollowing: action.isFollowing
+      }
     case 'FETCHED_FOLLOWERS':
       return {
         ...state,
