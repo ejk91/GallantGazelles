@@ -10,6 +10,8 @@ export default ({follow}) => (
         name={pitch.name} 
         profile={pitch.profile}
         key={pitch.id} />
+
+      
     })}
   </Comment.Group>
 )
