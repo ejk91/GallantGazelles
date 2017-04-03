@@ -31,6 +31,7 @@ export default class LoggedInNav extends Component {
               <Menu.Item name='user' as={Link} to='/user' active={activeItem === 'user'} onClick={this.handleItemClick}>
                 <Icon name='user circle outline' color='blue' size='large' /> {this.props.username}
               </Menu.Item>
+              <Menu.Item name='sign out' active={activeItem === 'sign out'} onClick={this.handleItemClick} />
               <Menu.Item>
                 <Input icon='search' placeholder='Search' />
               </Menu.Item>
