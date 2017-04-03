@@ -39,7 +39,7 @@ export function logOut() {
   return (dispatch) => {
     dispatch(loggingOut())
     axios.get('http://localhost:8080/auth/logout')
-      .then(results => dispatch(USER_LOGOUT_SUCCESSFUL))
+      .then(results => dispatch(logOutSuccessful()))
       .catch(error => dispatch(logOutError(error)))
 
   }

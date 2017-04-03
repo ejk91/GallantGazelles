@@ -24,6 +24,11 @@ function user(state = initialState, action) {
         ...state,
         error: action.error
       }
+    case 'USER_LOGOUT_ERROR'
+    return {
+      ...state,
+      error: action.error
+    }
     default: 
       return state;
   }
