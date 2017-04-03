@@ -24,10 +24,17 @@ function user(state = initialState, action) {
         ...state,
         error: action.error
       }
-    case 'USER_LOGOUT_ERROR'
+    case 'USER_LOGOUT_ERROR':
     return {
       ...state,
       error: action.error
+    }
+    case 'USER_LOGOUT_SUCCESSFUL':
+    return {
+      ...state,
+      username: undefined,
+      userid: undefined,
+      checkingInfo: false
     }
     default: 
       return state;

@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { Grid, Header, Icon, Input, Menu } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
+import { logOut } from '../actions/user';
+import { connect } from 'react-redux';
 
-
-export default class LoggedInNav extends Component {
+class LoggedInNav extends Component {
   constructor(props) {
     super(props)
     this.state = { activeItem: 'home' };
@@ -31,7 +32,7 @@ export default class LoggedInNav extends Component {
               <Menu.Item name='user' as={Link} to='/user' active={activeItem === 'user'} onClick={this.handleItemClick}>
                 <Icon name='user circle outline' color='blue' size='large' /> {this.props.username}
               </Menu.Item>
-              <Menu.Item name='sign out' active={activeItem === 'sign out'} onClick={this.handleItemClick} />
+              <Menu.Item name='sign out' active={activeItem === 'sign out'} onClick={()=>this.props.userLogOut()}/>
               <Menu.Item>
                 <Input icon='search' placeholder='Search' />
               </Menu.Item>
@@ -42,3 +43,18 @@ export default class LoggedInNav extends Component {
     )
   }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    ...state.user
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    userLogOut: () => { dispatch(logOut()) }
+  }
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(LoggedInNav);

@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { fetchBothCategoryPitches } from './pitch';
 //Log in functions
 
 export function completeSignIn(username, userid) {
@@ -39,7 +40,13 @@ export function logOut() {
   return (dispatch) => {
     dispatch(loggingOut())
     axios.get('http://localhost:8080/auth/logout')
-      .then(results => dispatch(logOutSuccessful()))
+      .then(results => {
+        dispatch(logOutSuccessful())
+        dispatch(fetchBothCategoryPitches())
+        // if(typeof results.redirect === 'string') {
+        //   window.location = results.redirect;
+        // }
+      })
       .catch(error => dispatch(logOutError(error)))
 
   }
